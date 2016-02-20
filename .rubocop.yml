@@ -2,12 +2,11 @@ AllCops:
   TargetRubyVersion: 2.3
   Exclude:
     - 'db/**/*'
-    - 'script/**/*'
     - 'bin/**/*'
     - 'vendor/**/*'
     - 'log/**/*'
     - 'Gemfile'
-    - 'spec/support/**/*'
+    - 'spec/**/*'
     - 'app/lib/**/*'
 Metrics/LineLength:
   Enabled: false

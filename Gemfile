@@ -24,6 +24,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'slim-rails'
+gem 'decent_exposure'
+gem 'responders'
 
 group :development, :test do
   gem 'activerecord-colored_log_subscriber'
@@ -33,6 +36,7 @@ group :development, :test do
   gem 'rubocop', require: false
   gem 'letter_opener'
   gem 'bullet'
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :test do
