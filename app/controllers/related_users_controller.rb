@@ -2,7 +2,9 @@ class RelatedUsersController < ApplicationController
   before_action :require_user
 
   def index
-    @subjects = related_user_constant.where(user: current_user)
+    @subjects = @current_user.following_users.by_name(
+      params[:name]
+    ).page(params[:page]).per(5)
   end
 
   def create
@@ -14,7 +16,9 @@ class RelatedUsersController < ApplicationController
   end
 
   def destroy
-    related_user_constant&.find_by(user: current_user)&.destroy
+    related_user_constant&.find_by(
+      user: current_user, related_id: params[:related_id]
+    )&.destroy
   end
 
   private

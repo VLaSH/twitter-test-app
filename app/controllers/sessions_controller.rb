@@ -1,7 +1,9 @@
 class SessionsController < ApplicationController
+  before_action :only_guests
+
   def create
-    @user = User.find_by(email: params[:email])
-    if @user&.authenticate(params[:password])
+    @user = User.find_by(email: params[:session][:email])
+    if @user&.authenticate(params[:session][:password]) && @user.email_confirmed
       session[:user_id] = @user.id
       redirect_to landings_path
     else

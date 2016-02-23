@@ -26,24 +26,14 @@ RSpec.describe TweetsController, type: :controller do
 
   describe '#update' do
     let(:tweet) { create(:tweet, user: user) }
+    before { patch :update, id: tweet.id, tweet: correct_params, format: :js }
 
-    context 'correct_params' do
-      it do
-        patch :update, id: tweet.id, tweet: correct_params, format: :js
-        expect(subject).to render_template(:update)
-      end
-    end
-    context 'incorrect_params' do
-      it do
-        patch :update, id: tweet.id, tweet: incorrect_params, format: :js
-        is_expected.to have_http_status :unprocessable_entity
-      end
-    end
+    it { is_expected.to have_http_status :no_content }
   end
 
   describe '#destroy' do
     let(:tweet) { create(:tweet) }
-    
+
     it 'render_template' do
       delete :destroy, id: tweet.id, format: :js
       expect(:subject).to render_template(:destroy)

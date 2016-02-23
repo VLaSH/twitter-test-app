@@ -1,0 +1,13 @@
+<% if @interacted_constant == InteractedTweet::Liked %>
+  $("#tweet_<%= params[:tweet_id] %>  .liked").html(
+    "<%= j render partial: 'interacted_tweets/liked', locals: { tweet: Tweet.find_by(id: params[:tweet_id]), user_id: params[:user_id] } %>"
+  )
+<% elsif @current_user.id == params[:user_id].to_i %>
+  $("#tweet_<%= params[:tweet_id] %>").slideUp('fast', function() {
+    this.remove();
+  })
+<% else %>
+  $("#tweet_<%= params[:tweet_id] %>  .favourite").html(
+    "<%= j render partial: 'interacted_tweets/favourite', locals: { tweet: Tweet.find_by(id: params[:tweet_id]), user_id: params[:user_id] } %>"
+  )
+<% end %>

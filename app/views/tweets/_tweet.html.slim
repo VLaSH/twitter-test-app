@@ -1,0 +1,4 @@
+- if @current_user.id == @user.id
+  = render partial: 'tweets/user_tweet', collection: @tweets, locals: { user_id: @user.id }
+- else
+  = render partial: 'tweets/someone_tweet', collection: @tweets, locals: { user_id: @user.id }

@@ -27,6 +27,18 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'slim-rails'
 gem 'decent_exposure'
 gem 'responders'
+gem 'bootstrap-sass'
+gem 'simple_form'
+gem 'active_record-acts_as'
+gem "font-awesome-rails"
+gem 'best_in_place', '~> 3.0.1'
+gem 'kaminari'
+gem 'jquery-turbolinks'
+gem 'omniauth-facebook'
+gem 'carrierwave'
+gem 'cloudinary'
+gem 'filepicker-rails'
+gem 'jquery-validation-rails'
 
 group :development, :test do
   gem 'activerecord-colored_log_subscriber'
@@ -35,8 +47,8 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rubocop', require: false
   gem 'letter_opener'
-  gem 'bullet'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'traceroute'
 end
 
 group :test do

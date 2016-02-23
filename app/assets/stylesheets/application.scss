@@ -1,0 +1,9 @@
+/*
+*= require_self
+*= require_tree .
+*/
+@import 'bootstrap';
+@import 'bootstrap-sprockets';
+@import "font-awesome";
+
+.auth-form { margin-top:100px; }

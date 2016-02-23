@@ -1,0 +1,17 @@
+div.row
+  div.tweet.col-xs-12 id="tweet_#{user_tweet.id}"
+    div.image-wrapper style='float:left;'
+      div.user-thumbnail-image
+        = image_tag(avatar_link(user_tweet.user, :thumbnail))
+    div.user-info-wrapper style='float:left;margin-left:10px;'
+      = link_to landings_path(user_id: user_tweet.user.id)
+        span.current-user-first-name
+          = user_tweet.user.first_name
+        span.current-user-last-name style='margin-left:5px'
+          = user_tweet.user.last_name
+  div.tweet-body.col-xs-9.col-xs-offset-2
+    - if user_tweet.user_id == @current_user.id
+      = best_in_place user_tweet, :body, as: :textarea, display_with: :simple_format, class: 'tweet-body'
+    - else
+      = simple_format user_tweet.body
+    div.pagination-stick

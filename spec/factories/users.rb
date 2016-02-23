@@ -8,5 +8,6 @@ FactoryGirl.define do
     last_name 'User'
     email
     password '12345678'
+    email_confirmed true
   end
 end

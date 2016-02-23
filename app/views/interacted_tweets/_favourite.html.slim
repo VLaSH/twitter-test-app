@@ -1,0 +1,11 @@
+div.favourite-icon.col-xs-4.pull-right style='padding:0px;'
+  - if tweet.user_id == @current_user.id
+    a.fa.fa-share
+  - elsif any_favourite_tweets?(@current_user.id, tweet.id)
+    = link_to interacted_tweet_path( { interact_object: 'InteractedTweet::Favourite', id: 'no-id', tweet_id: tweet.id, user_id: user_id} ), method: :delete, remote: true
+      i.fa.fa-share
+  - else
+    = link_to interacted_tweets_path( { interact_object: 'InteractedTweet::Favourite', id: 'no-id', tweet_id: tweet.id, user_id: user_id} ), method: :post, remote: true
+      i.fa.fa-share
+div.favourite-count.col-xs-4.pull-right style='padding:0px;'
+  = tweet.favourite_count

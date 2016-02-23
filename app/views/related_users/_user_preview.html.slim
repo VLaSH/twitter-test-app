@@ -1,0 +1,8 @@
+div.following-user-wrapper.col-lg-4.col-md-6 id="following_id_#{user_preview.id}"
+  = link_to landings_path(user_id: user_preview.id)
+    div.following-user-header.col-md-12.col-md-offset-0.col-sm-10.col-sm-offset-2
+      div.following-user-name
+        = user_preview.name
+    div.following-user-body.col-md-12.col-md-offset-0.col-sm-10.col-sm-offset-2
+      div.image style='width:96px;height:96px;'
+        = image_tag(avatar_link(user_preview, :related_preview), class: 'preview-image')

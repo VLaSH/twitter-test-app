@@ -1,0 +1,38 @@
+div.user-settings.col-xs-12 style='display:none;margin:10px'
+  div.avatar-title style='border-bottom:2px solid gray;margin-bottom:10px 0px;' Avatar
+  div.upload-avatar style='margin:0px 5px;'
+    = simple_form_for :user, url: user_path(id: @current_user.id), method: :patch, remote: true do |f|
+      = f.input :avatar, as: :file
+      = f.button :submit, data: { disable_with: 'Processing...' }
+  div.user-information-title style='border-bottom:2px solid gray;margin:10px 0px;' Personal information
+  div.user-information
+    ul#info
+      li
+        span First name: #{best_in_place @current_user, :first_name, url: user_path(id: @current_user.id), class: 'user-first-name-success', place_holder: 'click to set'}
+        i.fa.fa-pencil#first-name style='margin-left:5px;'
+      li
+        span Last name: #{best_in_place @current_user, :last_name, url: user_path(id: @current_user.id), class: 'user-last-name-success', place_holder: 'click to set'}
+        i.fa.fa-pencil#last-name style='margin-left:5px;'
+      li
+        span School: #{best_in_place @current_user.profile, :school, url: users_profiles_path(id: 'no-id', user_id: @current_user.id), place_holder: 'click to set'}
+        i.fa.fa-pencil#school style='margin-left:5px;'
+      li
+        span Website: #{best_in_place @current_user.profile, :website, url: users_profiles_path(id: 'no-id', user_id: @current_user.id), place_holder: 'click to set'}
+        i.fa.fa-pencil#website style='margin-left:5px;'
+      li
+        span Hobby: #{best_in_place @current_user.profile, :hobby, url: users_profiles_path(id: 'no-id', user_id: @current_user.id), place_holder: 'click to set'}
+        i.fa.fa-pencil#hobby style='margin-left:5px;'
+      li
+        span Status: #{best_in_place @current_user.profile, :status, url: users_profiles_path(id: 'no-id', user_id: @current_user.id), place_holder: 'click to set'}
+        i.fa.fa-pencil#status style='margin-left:5px;'
+      li
+        span Free Space: #{best_in_place @current_user.profile, :school, as: :textarea, url: users_profiles_path(id: 'no-id', user_id: @current_user.id), place_holder: 'click to set'}
+        i.fa.fa-pencil#free-space style='margin-left:5px;'
+
+  div.account-information-title style='border-bottom:2px solid gray;margin:10px 0px;' Account information
+  div.account-information
+    = simple_form_for :user, url: user_path(id: @current_user.id), method: :patch, remote: true, html: { id: 'user_settings' } do |f|
+      = f.input :email, require: true
+      = f.input :password, required: true
+      = f.input :password_confirmation, required: true
+      = f.button :submit, data: { disable_with: 'Processing...' }

@@ -1,0 +1,35 @@
+div.row
+  div.container.col-xs-12 id="user_id_#{@user.id}"
+    div.row
+      div.user-wrapper.col-sm-3.hidden-xs style='margin-top:50px;'
+        = render partial: 'users/user_card'
+      div.tweets-wrapper.col-lg-5.col-lg-offset-0.col-sm-8.col-sm-offset-1.col-xs-12 style='margin-top:100px'
+        div.row
+          div#new-tweets.col-xs-12
+            - if @current_user.id == @user.id
+              = render partial: 'tweets/new_tweet'
+          div#tweets.page.col-xs-12
+            - if @tweets.count > 0
+              = render partial: 'tweets/tweet'
+
+      div.following-users-wrapper.col-sm-4.hidden-xs.hidden-sm.hidden-md  style='margin-top:50px;'
+        div.row style='min-height:100px;'
+          div#following-users.col-xs-12
+            div.row
+              div.following-search.col-xs-12.form-group
+                input.search-field.form-control style='width:100%' placeholder='Search by following users'
+                ul.nav.nav-tabs.users-preview-tabs
+                  li.following-users-preview.active
+                    = link_to 'Following Users', related_users_path(user_id: @user.id, related_user: 'RelatedUser::Follower'), remote: true
+                  li.all-users-preview
+                    = link_to 'All Users', users_path, remote: true
+            div.row
+              div.user-preview-stick.col-xs-12
+                = render partial: 'related_users/user_preview', collection: @user.following_users
+              div.user-preview-pagination-stick
+        div.row
+          div#favourite-users.col-xs-12
+            h3 style='margin:15px;border-bottom:1px solid gray'
+              | Favourites
+            = render partial: 'favourites/favourite', collection: @user.favourites
+= paginate @tweets

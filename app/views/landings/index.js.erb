@@ -1,0 +1,13 @@
+$("#tweets").append("<%= j render partial: 'tweets/tweet' %></div>");
+console.log('lol');
+<% if @tweets.next_page %>
+  $('.pagination').replaceWith("<%= j paginate @tweets %>")
+<% else %>
+  $('.pagination').remove()
+<% end %>
+$('.comments a').off('click')
+$('.comments a').on('click', function() {
+  console.log("lol");
+  tweet_id = $(this).closest('.tweet').attr('id');
+  $("#" + tweet_id + " .sticks").toggle();
+})

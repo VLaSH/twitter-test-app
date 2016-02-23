@@ -1,0 +1,22 @@
+div.comment-wrapper.col-xs-12 style='margin-top:15px;' id="comment_#{comment.id}"
+  div.row
+    div.comment-header.col-xs-12
+      div.remove-comment-icon.col-xs-1.pull-right
+        - if comment.user_id == @current_user.id
+          = link_to comment_path(id: comment.id), method: :delete, remote: :true
+            i.fa.fa-trash-o.fa-lg
+      div.owner-image style='float:left;'
+        div.image
+          = image_tag(avatar_link(comment.user, :thumbnail))
+      div.comment-owner style='float:left;margin-left:10px;'
+        span.current-user-first-name
+          = comment.user.first_name
+        span.current-user-last-name style='margin-left:5px'
+          = comment.user.last_name
+    div.comment-content.col-xs-9.col-xs-offset-2
+      div.row
+        div.comment-body.col-xs-12 style='margin:0px 0px 15px;word-wrap:break-word;'
+          - if comment.user_id == @current_user.id
+            = best_in_place comment, :body, as: :textarea, display_with: :simple_format, class: 'comment-body'
+          - else
+            = simple_format comment.body

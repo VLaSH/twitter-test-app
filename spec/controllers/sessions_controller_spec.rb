@@ -8,13 +8,13 @@ RSpec.describe SessionsController, type: :controller do
       let(:user) { create(:user) }
 
       it do
-        post :create, email: user.email, password: user.password
+        post :create, session: { email: user.email, password: user.password }
         expect(subject).to redirect_to(landings_path)
       end
     end
     context 'user does not exist' do
       it do
-        post :create
+        post :create, session: { email: 'wrong_email' }
         expect(subject).to render_template(:new)
       end
     end
@@ -22,7 +22,7 @@ RSpec.describe SessionsController, type: :controller do
       let(:user) { create(:user) }
 
       it do
-        post :create, email: user.email, password: 'wrong_password'
+        post :create, session: { email: user.email, password: 'wrong_password' }
         expect(subject).to render_template(:new)
       end
     end
