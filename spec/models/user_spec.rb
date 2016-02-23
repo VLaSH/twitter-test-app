@@ -2,20 +2,20 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   describe 'associations' do
-    context 'has_many followers' do
-      it { should have_many(:followers).class_name('RelatedUser::Follower') }
+    context 'has_many following_users' do
+      it { should have_many(:following_users).class_name('User') }
     end
     context 'has_many favourite_users' do
-      it { should have_many(:favourite_users).class_name('RelatedUser::Favourite') }
+      it { should have_many(:favourite_users).class_name('User') }
     end
     context 'has_many tweets' do
       it { should have_many(:tweets) }
     end
     context 'has_many favourite_tweets' do
-      it { should have_many(:favourite_tweets).class_name('InteractedTweet::Favourite') }
+      it { should have_many(:favourite_tweets).class_name('Tweet') }
     end
     context 'has_many liked_tweets' do
-      it { should have_many(:liked_tweets).class_name('InteractedTweet::Liked') }
+      it { should have_many(:liked_tweets).class_name('Tweet') }
     end
     context 'has_many social_accounts' do
       it { should have_many(:social_accounts) }
@@ -26,11 +26,6 @@ RSpec.describe User, type: :model do
   end
 
   describe 'methods' do
-    context '#followers_and_user' do
-      let!(:user) { create(:user) }
-
-      it { expect(user.followers_and_user.count).to eq(1) }
-    end
     context '.from_omniauth' do
       let(:social_accounts_attributes) { attributes_for(:social_account) }
       let(:auth_params) { attributes_for(:user, social_accounts_attributes: social_accounts_attributes) }
@@ -65,9 +60,6 @@ RSpec.describe User, type: :model do
     end
     context 'password presence'do
       it { should validate_presence_of(:password) }
-    end
-    context 'password length'do
-      it { should validate_length_of(:password).is_at_least(8).is_at_most(16) }
     end
   end
 end

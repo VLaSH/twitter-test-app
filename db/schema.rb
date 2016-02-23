@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160218203441) do
+ActiveRecord::Schema.define(version: 20160222162031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,16 +43,29 @@ ActiveRecord::Schema.define(version: 20160218203441) do
   end
 
   create_table "tweets", force: :cascade do |t|
-    t.integer  "user_id",                null: false
-    t.string   "body",       limit: 100, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "user_id",                   null: false
+    t.string   "body",          limit: 100, null: false
+    t.datetime "interacted_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "user_profiles", force: :cascade do |t|
+    t.integer  "user_id",               null: false
+    t.string   "school",     limit: 25
+    t.string   "website",    limit: 25
+    t.string   "hobby",      limit: 25
+    t.string   "status",     limit: 25
+    t.text     "thinks"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
   end
 
   create_table "user_social_accounts", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.integer  "provider",   null: false
     t.string   "uid",        null: false
+    t.string   "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

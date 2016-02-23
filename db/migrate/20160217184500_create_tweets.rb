@@ -3,6 +3,7 @@ class CreateTweets < ActiveRecord::Migration
     create_table :tweets do |t|
       t.references :user, null: false
       t.string :body, limit: 100, null: false
+      t.datetime :interacted_at
 
       t.timestamps null: false
     end

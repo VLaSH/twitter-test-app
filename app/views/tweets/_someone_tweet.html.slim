@@ -1,0 +1,29 @@
+div.row
+  div.tweet.col-xs-12 id="tweet_#{someone_tweet.id}"
+    div.tweet-container.col-xs-11 style='margin-top:20px;'
+      div.row
+        div.tweet-header.col-xs-12
+          div.image-wrapper style='float:left;'
+            div.user-thumbnail-image
+              = image_tag(avatar_link(someone_tweet.user, :thumbnail))
+          div.user-info-wrapper style='margin-top:10px;margin-left:75px;'
+            = link_to landings_path(user_id: someone_tweet.user.id)
+              span.current-user-first-name
+                = someone_tweet.user.first_name
+              span.current-user-last-name style='margin-left:5px'
+                = someone_tweet.user.last_name
+        div.tweet-body.col-xs-9.col-xs-offset-2
+          = simple_format someone_tweet.body
+        div.tweet-footer.col-xs-12 style='margin-top:15px;'
+          div.favourite.col-xs-2.pull-right
+            = render partial: 'interacted_tweets/favourite', locals: { tweet: someone_tweet, user_id: user_id }
+          div.liked.col-xs-2.pull-right
+            = render partial: 'interacted_tweets/liked', locals: { tweet: someone_tweet, user_id: user_id }
+          div.comments.closed.col-xs-2
+            = link_to comments_path(tweet_id: someone_tweet.id, test: 'dss'), remote: true
+              i.fa.fa-comments
+        div.comment-separator.col-xs-6.col-xs-offset-3 style='margin-top:15px;border-top:2px solid gray;'
+        div.sticks style='display:none;'
+          div.new-comment-stick
+          div.comment-stick
+          div.pagination-stick

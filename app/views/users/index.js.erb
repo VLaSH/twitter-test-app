@@ -1,0 +1,2 @@
+$('.user-preview-stick').html("<%= j render partial: 'related_users/user_preview', collection: @users %>")
+$('.user-preview-pagination-stick').html("<%= j paginate @users, remote: true %>")

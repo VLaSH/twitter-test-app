@@ -1,0 +1,10 @@
+div.user-settings style='padding-right:0px'
+  - if @current_user.follow?(user.id)
+    = link_to 'UnFollow', related_user_path(id: 'no-id', related_id: user.id, related_user: 'RelatedUser::Follower'), method: :delete, remote: true, class:'a btn btn-default relation-button'
+  - else
+    = link_to 'Follow', related_users_path(related_id: user.id, related_user: 'RelatedUser::Follower'), remote: true, method: :post, class:'a btn btn-default relation-button'
+div.user-settings style='padding-left:0px'
+  - if @current_user.favourite?(user.id)
+    = link_to 'Not Favourite', related_user_path(id: 'no-id', related_id: user.id, related_user: 'RelatedUser::Favourite'), method: :delete, remote: true, class:'a btn btn-default relation-button'
+  - else
+    = link_to 'Favourite', related_users_path(related_id: user.id, related_user: 'RelatedUser::Favourite'), remote: true, method: :post, class:'a btn btn-default relation-button'

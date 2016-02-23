@@ -1,0 +1,21 @@
+div.user-card-wrapper.col-xs-12
+  div.row
+    div.user-avatar.col-xs-12
+      div.image
+        = image_tag(avatar_link(@user, :large), class: 'user-image')
+      div.user-name-wrapper.col-xs-12
+        div.user-name style='margin:10px;'
+          span.current-user-first-name
+            = @user.first_name
+          span.current-user-last-name style='margin-left:5px'
+            = @user.last_name
+
+    - if @current_user.id == @user.id
+      = render partial: 'users/settings'
+      div#settings-button.col-xs-12
+        a.btn.btn-default href='#' style='width:256px;display:block;' Settings
+    - else
+      div.relation-buttons.col-xs-12
+        = render partial: 'users/relation_buttons', locals: { user: @user }
+    div.user-information.col-xs-12
+      = render partial: 'users/user_information', locals: { user: @user }

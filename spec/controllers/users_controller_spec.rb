@@ -8,6 +8,7 @@ RSpec.describe UsersController, type: :controller do
   describe '#create' do
     context 'correct params' do
       it do
+        allow(UserMailer).to receive(:deliver_mail).and_return('Confirmed')
         post :create, user: correct_params
         expect(subject).to redirect_to(new_session_path)
       end
@@ -23,18 +24,10 @@ RSpec.describe UsersController, type: :controller do
   describe '#update' do
     let(:user) { create(:user) }
     before { session[:user_id] = user.id }
-
-    context 'correct_params' do
-      it do
-        put :update, id: user.id, user: correct_params
-        expect(subject).to redirect_to(landings_path)
-      end
-    end
-    context 'incorrect_params' do
-      it do
-        put :update, id: user.id, user: incorrect_params
-        expect(subject).to render_template(:edit)
-      end
+    
+    it do
+      put :update, id: user.id, user: correct_params
+      expect(subject).to redirect_to(landings_path)
     end
   end
 

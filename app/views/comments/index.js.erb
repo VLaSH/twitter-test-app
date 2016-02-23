@@ -1,0 +1,3 @@
+$("#tweet_<%= params[:tweet_id] %> .new-comment-stick").html("<%= j render partial: 'tweets/new_comment', locals: { tweet_id: params[:tweet_id] } %>");
+$("#tweet_<%= params[:tweet_id] %> .comment-stick").html("<%= j render partial: 'comments/comment', collection: @comments %>");
+$("#tweet_<%= params[:tweet_id] %> .pagination-stick").html("<%= j paginate @comments, remote: true %>");

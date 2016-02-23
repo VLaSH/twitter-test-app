@@ -1,0 +1,13 @@
+$(document).ready(
+  ->
+    $('.all-users-preview').on('click',
+      ->
+        $('.following-users-preview').removeClass('active')
+        $(this).addClass('active')
+    )
+    $('.following-users-preview').on('click',
+      ->
+        $('.all-users-preview').removeClass('active')
+        $(this).addClass('active')
+    )
+)

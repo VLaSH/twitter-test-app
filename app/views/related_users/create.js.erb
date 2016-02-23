@@ -1,0 +1,1 @@
+$('.relation-buttons').html("<%= j render partial: 'users/relation_buttons', locals: { user: User.find_by(id: params[:related_id]) } %>")

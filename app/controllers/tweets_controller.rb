@@ -5,12 +5,13 @@ class TweetsController < ApplicationController
 
   def create
     @tweet = Tweet.create(tweet_attributes.merge(user: current_user))
-
     render status: :unprocessable_entity unless @tweet.id
   end
 
   def update
-    render status: :unprocessable_entity unless tweet.save
+    tweet.save
+
+    respond_with_bip(tweet)
   end
 
   def destroy

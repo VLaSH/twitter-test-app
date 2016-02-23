@@ -4,6 +4,7 @@ class CreateUserSocialAccounts < ActiveRecord::Migration
       t.references :user, null: false
       t.integer :provider, null: false
       t.string :uid, null: false
+      t.string :avatar
 
       t.timestamps null: false
     end

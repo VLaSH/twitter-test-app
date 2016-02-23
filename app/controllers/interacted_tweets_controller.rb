@@ -7,14 +7,14 @@ class InteractedTweetsController < ApplicationController
 
   def create
     @interacted_tweet = interacted_constant&.create(
-      user: current_user, tweet: Tweet.find(params[:tweet_id])
+      user: current_user, tweet: Tweet.find_by(id: params[:tweet_id])
     )
 
     render status: :unprocessable_entity unless @interacted_tweet&.id
   end
 
   def destroy
-    interacted_constant&.find_by(tweet: params[:tweet_id])&.destroy
+    interacted_constant&.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)&.destroy
   end
 
   private

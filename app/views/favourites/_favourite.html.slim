@@ -1,0 +1,7 @@
+div.favourites-wrapper id="favourite_id_#{favourite.id}"
+  - if favourite.class.name == "Tweet"
+    div.favourite-tweet.col-xs-12 style='margin-top:15px'
+      = render partial: 'favourites/tweet', locals: { user_tweet: favourite }
+  - else
+    div.favourite-user.col-xs-4 style='margin-top:15px'
+      = render partial: 'favourites/user', locals: { user_preview: favourite }

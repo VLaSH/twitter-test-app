@@ -1,0 +1,7 @@
+div.new-tweet-container.col-xs-12
+  div.new-tweet.col-xs-12
+    div.new-tweet-content.col-xs-11
+      span Write something
+      = simple_form_for :tweet, url: :tweets, remote: true, html: { id: 'new_tweet' } do |f|
+        = f.input :body, as: :text, input_html: { id: 'new-tweet' }, label: false
+        = f.button :submit, data: { disable_with: 'Processing...' }

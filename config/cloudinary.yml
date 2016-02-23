@@ -1,0 +1,15 @@
+---
+development:
+  cloud_name: vlad-shevtsov-main
+  api_key: 689224512248746
+  api_secret: gAH-dsCqGzcH9_xqlzv_3b0kTZQ
+  enhance_image_tag: true
+  secure: true
+production:
+  cloud_name: vlad-shevtsov-main
+  api_key: '689224512248746'
+  api_secret: gAH-dsCqGzcH9_xqlzv_3b0kTZQ
+  enhance_image_tag: true
+  static_image_support: true
+  secure: true
+  enhance_image_tag: true
