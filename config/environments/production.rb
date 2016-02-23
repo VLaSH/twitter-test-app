@@ -71,12 +71,12 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: 'twitter-test-app.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'twitter-test-application.herokuapp.com' }
   config.assets.raise_runtime_errors = true
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    domain: 'twitter-test-app.herokuapp.com',
+    domain: 'twitter-test-application.herokuapp.com',
     user_name: 'twitter.test.application@gmail.com',
     password: ENV['MAILER_PASSWORD'],
     authentication: 'plain',
