@@ -13,7 +13,7 @@ Bundler.require(*Rails.groups)
 
 module MevTestApp
   class Application < Rails::Application
-    secrets.each { |key, value| ENV[key.to_s] = value }
+    secrets.each { |key, value| ENV[key.to_s] = value } unless Rails.env.production?
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
