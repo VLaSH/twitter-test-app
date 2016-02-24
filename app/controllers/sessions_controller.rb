@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  before_action :only_guests
+  before_action :only_guests, except: :destroy
 
   def create
     @user = User.find_by(email: params[:session][:email])
