@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   def create
     if user.save
-      session[:user_id] = user.id
       user.send_email_confirmation
       redirect_to new_session_path
     else
@@ -20,6 +19,7 @@ class UsersController < ApplicationController
 
   def update
     user.save
+    user.send_email_confirmation
 
     respond_to do |f|
       f.json { respond_with_bip(user) }

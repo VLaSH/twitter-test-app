@@ -41,6 +41,7 @@ module UserMethods
         social_accounts_attributes: [
           auth_params[:social_accounts_attributes]
         ]) unless user.id
+      user.email_confirmed = true
       user
     end
 
