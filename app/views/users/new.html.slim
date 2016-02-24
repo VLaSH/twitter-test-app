@@ -1,5 +1,8 @@
 div.row
   div.auth-form.registration-wrapper.col-xs-12.col-sm-6.col-sm-offset-3.col-md-4.col-sm-offset-4
+    - if flash[:error]
+      div.alert.alert-danger
+        = flash[:error]
     = simple_form_for user do |f|
       = f.input :first_name
       = f.input :last_name

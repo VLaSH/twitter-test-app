@@ -3,5 +3,5 @@ div.new-comment-container.col-xs-12
     = simple_form_for :comment, url: comments_path, method: :create, remote: true, html: { id: 'new_comment' } do |f|
       = f.input :user_id, as: :hidden, input_html: { value: @current_user.id }
       = f.input :tweet_id, as: :hidden, input_html: { value: tweet_id }
-      = f.input :body, as: :text, label: false
+      = f.input :body, as: :text, input_html: { id: 'new-comment' }, label: false
       = f.button :submit, data: { disable_with: 'Processing...' }

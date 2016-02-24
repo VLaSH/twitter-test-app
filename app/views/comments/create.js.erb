@@ -1,1 +1,2 @@
 $("#tweet_<%= params[:comment][:tweet_id] %> .new-comment-container").after("<%= j render partial: 'comments/comment', locals: { comment: comment } %>")
+$('textarea#new-comment').val('')

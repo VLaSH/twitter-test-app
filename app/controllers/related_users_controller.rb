@@ -2,7 +2,7 @@ class RelatedUsersController < ApplicationController
   before_action :require_user
 
   def index
-    @subjects = @current_user.following_users.by_name(
+    @subjects = User.find_by(id: params[:user_id]).following_users.by_name(
       params[:name]
     ).page(params[:page]).per(5)
   end

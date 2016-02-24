@@ -10,9 +10,11 @@ class UsersController < ApplicationController
 
   def create
     if user.save
+      flash[:notice] = 'Check your email'
       user.send_email_confirmation
       redirect_to new_session_path
     else
+      flash[:error] = 'Check the fields'
       render :new
     end
   end

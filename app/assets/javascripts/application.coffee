@@ -11,6 +11,7 @@
 $(document).ready(
   ->
     jQuery(".best_in_place").best_in_place()
+    removeAlerts()
 )
 $(document).ready ->
   if $('.pagination').length > 0
@@ -20,3 +21,9 @@ $(document).ready ->
         $('.pagination').text('Loading...')
         $.getScript(next.attr('href'))
     $(window).scroll()
+
+removeAlerts = ->
+  $('.alert').on('click',
+    ->
+      $(this).remove()
+  )
